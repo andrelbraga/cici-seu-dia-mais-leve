@@ -3,93 +3,121 @@ import { MessageCircle, Bot, Smartphone, Sparkles } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="hero-section min-h-screen flex items-center justify-center px-6 py-20">
-      <div className="container max-w-6xl mx-auto">
-        <div className="text-center animate-fade-in">
-          {/* Badge */}
-          <div className="inline-block glass-card px-6 py-3 mb-8 rounded-full">
-            <span className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-              <Bot className="w-4 h-4" />
-              Assistente Virtual Inteligente
-            </span>
-          </div>
-          
-          {/* Main Heading */}
-          <h1 className="text-6xl lg:text-8xl font-bold mb-8 leading-tight">
-            <span className="gradient-text">Sou a Cici</span>
-          </h1>
-          
-          {/* Subtitle */}
-          <p className="text-xl lg:text-3xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
-            Sua assistente virtual que facilita o dia-a-dia através do WhatsApp.
-            <br />
-            <span className="text-primary font-medium">Lembretes, organização financeira e informações inteligentes.</span>
-          </p>
-          
-          {/* Feature Pills */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <div className="glass-card px-4 py-2 rounded-full">
-              <span className="text-sm font-medium flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-primary" />
-                Totalmente Gratuito
+    <section id="hero" className="hero-section min-h-screen flex items-center justify-center px-6 py-32">
+      <div className="container max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-left animate-fade-in">
+            {/* Badge */}
+            <div className="inline-block glass-card px-4 py-2 mb-6 rounded-full">
+              <span className="text-sm font-medium text-primary flex items-center gap-2">
+                <Bot className="w-4 h-4" />
+                Sed Imperdiet Enim IuVitae Viverra Justo
               </span>
             </div>
-            <div className="glass-card px-4 py-2 rounded-full">
-              <span className="text-sm font-medium flex items-center gap-2">
-                <Smartphone className="w-4 h-4 text-primary" />
-                Apenas no WhatsApp
-              </span>
-            </div>
-            <div className="glass-card px-4 py-2 rounded-full">
-              <span className="text-sm font-medium flex items-center gap-2">
-                <Bot className="w-4 h-4 text-primary" />
-                Inteligência Artificial
-              </span>
-            </div>
-          </div>
-          
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-6 text-xl rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              asChild
-            >
-              <a 
-                href="https://wa.me/5511999999999?text=Olá%20Cici,%20gostaria%20de%20começar%20a%20usar%20seus%20serviços!"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="mr-3 h-6 w-6" />
-                Falar com a Cici
-              </a>
-            </Button>
             
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="glass-card border-glass-border hover:bg-glass-hover px-10 py-6 text-xl rounded-2xl transition-all duration-300 hover:scale-105"
-              onClick={() => {
-                const featuresSection = document.getElementById('features');
-                featuresSection?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Conhecer Funcionalidades
-            </Button>
+            {/* Main Heading */}
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+              <span className="gradient-text">Sou a Cici</span>
+            </h1>
+            
+            {/* Subtitle */}
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Sua assistente virtual que facilita o dia-a-dia através do WhatsApp. 
+              Lembretes, organização financeira e informações inteligentes.
+            </p>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary-dark text-primary-foreground px-8 py-4 text-lg rounded-xl shadow-purple hover:shadow-xl transition-all duration-300"
+                asChild
+              >
+                <a 
+                  href="https://wa.me/5511999999999?text=Olá%20Cici,%20gostaria%20de%20começar%20a%20usar%20seus%20serviços!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Começar Agora
+                </a>
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg rounded-xl transition-all duration-300"
+                onClick={() => {
+                  const featuresSection = document.getElementById('features');
+                  featuresSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Ver Demo
+              </Button>
+            </div>
+
+            {/* Feature Pills */}
+            <div className="flex flex-wrap gap-3">
+              <div className="glass-card px-3 py-1 rounded-full">
+                <span className="text-sm font-medium flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-primary" />
+                  Gratuito
+                </span>
+              </div>
+              <div className="glass-card px-3 py-1 rounded-full">
+                <span className="text-sm font-medium flex items-center gap-1">
+                  <Smartphone className="w-3 h-3 text-primary" />
+                  WhatsApp
+                </span>
+              </div>
+              <div className="glass-card px-3 py-1 rounded-full">
+                <span className="text-sm font-medium flex items-center gap-1">
+                  <Bot className="w-3 h-3 text-primary" />
+                  IA Avançada
+                </span>
+              </div>
+            </div>
           </div>
           
-          {/* Visual Element */}
-          <div className="relative max-w-3xl mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 rounded-3xl blur-3xl animate-pulse"></div>
-            <div className="relative glass-card p-8 rounded-3xl">
-              <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center animate-float">
-                  <MessageCircle className="w-12 h-12 text-white" />
+          {/* Right Content - Dashboard Mockup */}
+          <div className="relative animate-fade-in-delay">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-3xl animate-pulse"></div>
+            <div className="relative glass-card p-6 rounded-3xl shadow-purple">
+              <div className="bg-gradient-card rounded-2xl p-6 space-y-4">
+                {/* Header */}
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold gradient-text">Painel da Cici</h3>
+                  <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 gradient-text">Comece agora mesmo!</h3>
-                <p className="text-muted-foreground text-lg">
-                  Envie uma mensagem no WhatsApp e descubra como a Cici pode transformar sua rotina
-                </p>
+                
+                {/* Chat Preview */}
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                      <Bot className="w-4 h-4 text-white" />
+                    </div>
+                    <div className="glass-card p-3 rounded-lg max-w-xs">
+                      <p className="text-sm">Olá! Sou a Cici, sua assistente virtual. Como posso ajudar hoje?</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3 justify-end">
+                    <div className="bg-primary text-primary-foreground p-3 rounded-lg max-w-xs">
+                      <p className="text-sm">Preciso lembrar de pagar a conta de luz amanhã</p>
+                    </div>
+                    <div className="w-8 h-8 bg-muted rounded-full"></div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                      <Bot className="w-4 h-4 text-white" />
+                    </div>
+                    <div className="glass-card p-3 rounded-lg max-w-xs">
+                      <p className="text-sm">✅ Lembrete criado! Te aviso amanhã às 09:00.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
