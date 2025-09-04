@@ -1,94 +1,84 @@
-import { 
-  Bell, 
-  Calculator, 
-  Brain, 
-  MessageSquare, 
-  Calendar, 
-  Shield, 
-  Target, 
-  Smartphone,
-  Clock,
-  TrendingUp,
-  Zap,
-  CheckCircle
-} from "lucide-react";
+import { Bell, DollarSign, Brain, Clock, Target, MessageSquare } from "lucide-react";
 
 const features = [
   {
-    icon: MessageSquare,
-    title: "Vivamus sit amet interdum",
-    description: "Vivamus ut lorem rhoncus, tincidunt mi et lorem. Vestibulum et risus lorem et sollicitudin quam.",
-    highlights: ["Interface via WhatsApp", "Sem apps extras", "Disponível 24/7"]
+    icon: Bell,
+    title: "Lembretes Inteligentes",
+    description: "Lembretes de medicamentos, compromissos e tarefas recorrentes. Nunca mais esqueça do que é importante.",
+    highlights: ["Medicamentos", "Compromissos", "Tarefas recorrentes", "Notificações personalizadas"]
   },
   {
-    icon: Calculator,
-    title: "Lorem ipsum dolor sit amet",
-    description: "Organização financeira completa através de comandos simples no WhatsApp.",
-    highlights: ["Controle de gastos", "Lembretes de pagamento", "Relatórios automáticos"]
+    icon: DollarSign,
+    title: "Gestão Financeira",
+    description: "Organize suas finanças com visão clara de despesas e receitas. Crie metas e receba notificações inteligentes.",
+    highlights: ["Controle de gastos", "Metas financeiras", "Relatórios claros", "Notificações de pagamento"]
   },
   {
     icon: Brain,
-    title: "Quisque ut Metus",
-    description: "Inteligência artificial avançada para entender e antecipar suas necessidades.",
-    highlights: ["IA de última geração", "Aprendizado contínuo", "Respostas personalizadas"]
+    title: "Inteligência Artificial",
+    description: "Tire dúvidas, obtenha informações e receba suporte inteligente para suas necessidades diárias.",
+    highlights: ["Respostas inteligentes", "Suporte 24/7", "Aprendizado contínuo", "Linguagem natural"]
   }
-];
-
-const additionalFeatures = [
-  { icon: Clock, title: "Lembretes" },
-  { icon: TrendingUp, title: "Análises" },
-  { icon: Zap, title: "Automação" },
-  { icon: CheckCircle, title: "Tarefas" }
 ];
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="py-20 px-6">
+    <section id="features" className="py-24 px-6 bg-gradient-to-b from-background to-secondary/30">
       <div className="container max-w-7xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold gradient-text mb-6">
-            Vivamus sit amet interdum
+          <div className="inline-block glass-card px-4 py-2 mb-6">
+            <span className="text-sm font-medium text-muted-foreground">
+              Funcionalidades
+            </span>
+          </div>
+          
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            <span className="gradient-text">Tudo que você precisa</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Vivamus ut lorem rhoncus, tincidunt mi et lorem. Vestibulum et risus lorem et 
-            sollicitudin quam tortor. Nunc quis dignissim quam.
+          
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            A Cici oferece funcionalidades inteligentes para simplificar sua rotina,
+            tudo através do WhatsApp sem nenhum custo adicional.
           </p>
         </div>
 
-        {/* Main Features */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="glass-card p-8 rounded-3xl animate-fade-in hover:scale-105 transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mb-6">
-                <feature.icon className="w-8 h-8 text-white" />
+            <div 
+              key={index}
+              className="glass-card p-8 rounded-2xl hover:scale-105 transition-all duration-300 cursor-pointer group"
+            >
+              <div className="mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4 group-hover:bg-primary/20 transition-colors">
+                  <feature.icon className="h-8 w-8 text-primary" />
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-3 text-foreground">
+                  {feature.title}
+                </h3>
+                
+                <p className="text-muted-foreground mb-6">
+                  {feature.description}
+                </p>
               </div>
               
-              <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">{feature.description}</p>
-              
-              <ul className="space-y-2">
-                {feature.highlights.map((highlight, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <CheckCircle className="w-4 h-4 text-success" />
-                    <span className="text-sm">{highlight}</span>
-                  </li>
+              <div className="space-y-3">
+                {feature.highlights.map((highlight, highlightIndex) => (
+                  <div key={highlightIndex} className="flex items-center text-sm">
+                    <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                    <span className="text-muted-foreground">{highlight}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Additional Features Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {additionalFeatures.map((feature, index) => (
-            <div key={index} className="glass-card p-6 rounded-2xl text-center animate-fade-in">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <feature.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h4 className="font-semibold">{feature.title}</h4>
-            </div>
-          ))}
+        {/* Additional Icons Row */}
+        <div className="mt-16 flex justify-center space-x-12 opacity-60">
+          <Clock className="h-8 w-8 text-muted-foreground" />
+          <Target className="h-8 w-8 text-muted-foreground" />
+          <MessageSquare className="h-8 w-8 text-muted-foreground" />
         </div>
       </div>
     </section>
