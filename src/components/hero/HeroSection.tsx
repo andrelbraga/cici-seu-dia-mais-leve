@@ -28,15 +28,26 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                asChild
               >
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Falar com a Cici
+                <a 
+                  href="https://wa.me/5511999999999?text=Olá%20Cici,%20gostaria%20de%20começar%20a%20usar%20seus%20serviços!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Falar com a Cici
+                </a>
               </Button>
               
               <Button 
                 variant="outline" 
                 size="lg"
                 className="glass-card border-glass-border hover:bg-glass-hover px-8 py-6 text-lg rounded-xl"
+                onClick={() => {
+                  const featuresSection = document.getElementById('features');
+                  featuresSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 Conhecer Funcionalidades
               </Button>

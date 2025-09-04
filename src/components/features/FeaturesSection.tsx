@@ -23,7 +23,7 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-background to-secondary/30">
+    <section id="features" className="py-24 px-6 bg-gradient-to-b from-background to-secondary/30">
       <div className="container max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-block glass-card px-4 py-2 mb-6">
