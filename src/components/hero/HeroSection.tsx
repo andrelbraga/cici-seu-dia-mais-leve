@@ -69,12 +69,9 @@ const HeroSection = () => {
               variant="outline" 
               size="lg"
               className="glass-card border-glass-border hover:bg-glass-hover px-10 py-6 text-xl rounded-2xl transition-all duration-300 hover:scale-105"
-              onClick={() => {
-                const featuresSection = document.getElementById('features');
-                featuresSection?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => window.location.href = '/login'}
             >
-              Conhecer Funcionalidades
+              Área do Cliente
             </Button>
           </div>
           
