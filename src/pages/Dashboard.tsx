@@ -10,6 +10,7 @@ import { LogOut, User, Settings, MessageSquare, DollarSign, Bell, BarChart3 } fr
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
+  const [activeQuickAction, setActiveQuickAction] = useState<string | null>(null);
 
   const handleLogout = () => {
     logout();
@@ -164,11 +165,19 @@ const Dashboard = () => {
                     <CardTitle>Ações Rápidas</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start"
+                      onClick={() => setActiveQuickAction('transaction')}
+                    >
                       <DollarSign className="mr-2 h-4 w-4" />
                       Adicionar Transação
                     </Button>
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start"
+                      onClick={() => setActiveQuickAction('reminder')}
+                    >
                       <Bell className="mr-2 h-4 w-4" />
                       Novo Lembrete
                     </Button>

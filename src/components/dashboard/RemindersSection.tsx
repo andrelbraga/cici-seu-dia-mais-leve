@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import AddReminderModal from './AddReminderModal';
 import { Bell, Clock, CheckCircle, AlertCircle, PlusCircle, Calendar } from 'lucide-react';
 
 interface Reminder {
@@ -15,6 +16,7 @@ interface Reminder {
 }
 
 const RemindersSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [reminders, setReminders] = useState<Reminder[]>([
     {
       id: '1',
@@ -109,6 +111,15 @@ const RemindersSection = () => {
   const pendingReminders = reminders.filter(r => !r.completed);
   const completedReminders = reminders.filter(r => r.completed);
 
+  const addReminder = (newReminder: Omit<Reminder, 'id' | 'completed'>) => {
+    const reminder: Reminder = {
+      ...newReminder,
+      id: Date.now().toString(),
+      completed: false
+    };
+    setReminders(prev => [...prev, reminder]);
+  };
+
   return (
     <div className="space-y-6">
       {/* Summary Stats */}
@@ -174,7 +185,7 @@ const RemindersSection = () => {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Lembretes</CardTitle>
-          <Button size="sm" className="flex items-center gap-2">
+          <Button size="sm" className="flex items-center gap-2" onClick={() => setIsModalOpen(true)}>
             <PlusCircle className="h-4 w-4" />
             Novo Lembrete
           </Button>
@@ -269,6 +280,12 @@ const RemindersSection = () => {
           )}
         </CardContent>
       </Card>
+
+      <AddReminderModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAdd={addReminder}
+      />
     </div>
   );
 };

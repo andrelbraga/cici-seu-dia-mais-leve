@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { TrendingUp, TrendingDown, DollarSign, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import AddTransactionModal from './AddTransactionModal';
 
 interface Transaction {
   id: string;
@@ -13,14 +14,14 @@ interface Transaction {
 }
 
 const FinancialSummary = () => {
-  // Mock data - será substituído pela integração com backend
-  const transactions: Transaction[] = [
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [transactions, setTransactions] = useState<Transaction[]>([
     { id: '1', type: 'income', amount: 3500, description: 'Salário', date: '2024-01-15', category: 'Trabalho' },
     { id: '2', type: 'expense', amount: 150, description: 'Supermercado', date: '2024-01-14', category: 'Alimentação' },
     { id: '3', type: 'expense', amount: 80, description: 'Combustível', date: '2024-01-13', category: 'Transporte' },
     { id: '4', type: 'income', amount: 500, description: 'Freelance', date: '2024-01-12', category: 'Extra' },
     { id: '5', type: 'expense', amount: 1200, description: 'Aluguel', date: '2024-01-10', category: 'Moradia' },
-  ];
+  ]);
 
   const totalIncome = transactions
     .filter(t => t.type === 'income')
@@ -37,6 +38,14 @@ const FinancialSummary = () => {
       style: 'currency',
       currency: 'BRL'
     }).format(value);
+  };
+
+  const addTransaction = (newTransaction: Omit<Transaction, 'id'>) => {
+    const transaction: Transaction = {
+      ...newTransaction,
+      id: Date.now().toString()
+    };
+    setTransactions(prev => [transaction, ...prev]);
   };
 
   return (
@@ -114,7 +123,7 @@ const FinancialSummary = () => {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Transações Recentes</CardTitle>
-          <Button size="sm" className="flex items-center gap-2">
+          <Button size="sm" className="flex items-center gap-2" onClick={() => setIsModalOpen(true)}>
             <PlusCircle className="h-4 w-4" />
             Adicionar
           </Button>
@@ -145,6 +154,12 @@ const FinancialSummary = () => {
           </div>
         </CardContent>
       </Card>
+
+      <AddTransactionModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAdd={addTransaction}
+      />
     </div>
   );
 };
